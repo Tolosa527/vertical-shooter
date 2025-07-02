@@ -1,7 +1,0 @@
-res://scenes/main/Main.tscn
-res://scenes/objects/Bullet.tscn
-res://scenes/objects/Obstacle.tscn
-res://scripts/Bullet.gd
-res://scripts/Obstacle.gd
-res://scripts/Player.gd
-res://scripts/Letter.gd
