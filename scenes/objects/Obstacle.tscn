@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm5j8p9n1k4ty"]
+
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_obstacle"]
+
+[sub_resource type="PlaceholderTexture2D" id="placeholder_texture"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(28, 28)
+
+[node name="Obstacle" type="Area2D"]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_obstacle")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.4, 0.4, 1)
+texture = SubResource("placeholder_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")

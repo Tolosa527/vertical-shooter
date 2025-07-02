@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5h0kghtw6lnu"]
+
+[ext_resource type="Script" uid="uid://ctu2pkifkf82l" path="res://scenes/main/Main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://dgscxpp40e8pn" path="res://scripts/GameManager.gd" id="2_7y8hx"]
+[ext_resource type="Script" uid="uid://dfrdirkxsu1fb" path="res://scripts/ScrollingBackground.gd" id="3_p6w8k"]
+[ext_resource type="PackedScene" uid="uid://bxm7h8r5nyfho" path="res://scenes/player/Player.tscn" id="4_n6q7m"]
+[ext_resource type="Script" uid="uid://t2wb7xsr8nn1" path="res://scripts/Spawner.gd" id="5_j9k3n"]
+[ext_resource type="PackedScene" uid="uid://cm5j8qan1k4ty" path="res://scenes/objects/Obstacle.tscn" id="6_l2m4o"]
+[ext_resource type="PackedScene" uid="uid://dr6laq2s3v5wu" path="res://scenes/objects/Letter.tscn" id="7_p8r1s"]
+[ext_resource type="Script" uid="uid://vihqemf3ca3p" path="res://scripts/UIManager.gd" id="8_t4u6v"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_7y8hx")
+
+[node name="ScrollingBackground" type="Node2D" parent="."]
+script = ExtResource("3_p6w8k")
+
+[node name="Player" parent="." instance=ExtResource("4_n6q7m")]
+position = Vector2(400, 500)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("5_j9k3n")
+obstacle_scene = ExtResource("6_l2m4o")
+letter_scene = ExtResource("7_p8r1s")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_t4u6v")
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 30.0
+text = "SCORE: 0"
+
+[node name="WordLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 500.0
+offset_bottom = 30.0
+text = "WORD: _ _ _"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 650.0
+offset_right = 800.0
+offset_bottom = 30.0
+text = "LEVEL: 1"
+horizontal_alignment = 2
+
+[node name="LivesLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 60.0
+text = "LIVES: 3"
+
+[node name="WordCompletedLabel" type="Label" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 250.0
+offset_top = 250.0
+offset_right = 550.0
+offset_bottom = 300.0
+text = "WORD COMPLETED!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 600.0
+offset_bottom = 400.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 350.0
+offset_bottom = 100.0
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 120.0
+offset_right = 250.0
+offset_bottom = 150.0
+text = "RESTART"

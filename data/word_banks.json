@@ -1,0 +1,132 @@
+{
+  "word_banks": {
+    "basic": {
+      "name": "Basic Words",
+      "description": "Simple 3-5 letter words for beginners",
+      "words": [
+        "CAT",
+        "DOG",
+        "SUN",
+        "MOON",
+        "STAR",
+        "TREE",
+        "HOUSE",
+        "WATER",
+        "HAPPY",
+        "FRIEND"
+      ]
+    },
+    "animals": {
+      "name": "Animals",
+      "description": "Animal names for nature learning",
+      "words": [
+        "ELEPHANT",
+        "TIGER",
+        "RABBIT",
+        "BIRD",
+        "FISH",
+        "HORSE",
+        "BEAR",
+        "LION",
+        "MONKEY",
+        "WHALE"
+      ]
+    },
+    "colors": {
+      "name": "Colors",
+      "description": "Color names for art learning",
+      "words": [
+        "RED",
+        "BLUE",
+        "GREEN",
+        "YELLOW",
+        "PURPLE",
+        "ORANGE",
+        "BLACK",
+        "WHITE",
+        "PINK",
+        "BROWN"
+      ]
+    },
+    "numbers": {
+      "name": "Numbers",
+      "description": "Number words for math learning",
+      "words": [
+        "ONE",
+        "TWO",
+        "THREE",
+        "FOUR",
+        "FIVE",
+        "SIX",
+        "SEVEN",
+        "EIGHT",
+        "NINE",
+        "TEN"
+      ]
+    }
+  },
+  "translations": {
+    "en": {
+      "ui_score": "SCORE:",
+      "ui_word": "WORD:",
+      "ui_level": "LEVEL:",
+      "ui_game_over": "GAME OVER",
+      "ui_word_completed": "WORD COMPLETED!",
+      "ui_press_space": "PRESS SPACE TO SHOOT"
+    },
+    "es": {
+      "ui_score": "PUNTOS:",
+      "ui_word": "PALABRA:",
+      "ui_level": "NIVEL:",
+      "ui_game_over": "JUEGO TERMINADO",
+      "ui_word_completed": "¡PALABRA COMPLETADA!",
+      "ui_press_space": "PRESIONA ESPACIO PARA DISPARAR"
+    }
+  },
+  "game_settings": {
+    "default_language": "en",
+    "default_word_bank": "basic",
+    "levels": [
+      {
+        "level": 1,
+        "word_bank": "basic",
+        "obstacle_speed": 50,
+        "obstacle_spawn_rate": 2.0,
+        "letters_in_order": false,
+        "max_obstacles": 3
+      },
+      {
+        "level": 2,
+        "word_bank": "basic",
+        "obstacle_speed": 75,
+        "obstacle_spawn_rate": 1.8,
+        "letters_in_order": false,
+        "max_obstacles": 4
+      },
+      {
+        "level": 3,
+        "word_bank": "animals",
+        "obstacle_speed": 75,
+        "obstacle_spawn_rate": 1.8,
+        "letters_in_order": true,
+        "max_obstacles": 4
+      },
+      {
+        "level": 4,
+        "word_bank": "colors",
+        "obstacle_speed": 100,
+        "obstacle_spawn_rate": 1.5,
+        "letters_in_order": true,
+        "max_obstacles": 5
+      },
+      {
+        "level": 5,
+        "word_bank": "numbers",
+        "obstacle_speed": 125,
+        "obstacle_spawn_rate": 1.2,
+        "letters_in_order": true,
+        "max_obstacles": 6
+      }
+    ]
+  }
+}
