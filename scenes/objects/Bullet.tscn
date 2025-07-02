@@ -1,21 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq7w9e1r2t3y4"]
+[gd_scene load_steps=6 format=3 uid="uid://dq7xae1r2t3y4"]
 
-[ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_bullet"]
-
-[sub_resource type="PlaceholderTexture2D" id="placeholder_texture"]
-size = Vector2(4, 8)
+[ext_resource type="Script" uid="uid://b08fyqcjjjtmo" path="res://scripts/Bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" uid="uid://dv3k6ugdu0mui" path="res://assets/sprites/nave_02-Sheet.png" id="2_bullet_texture"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(4, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3s4m"]
+atlas = ExtResource("2_bullet_texture")
+region = Rect2(166, 168, 83, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k3s4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3s4m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_bullet")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 1)
-texture = SubResource("placeholder_texture")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k3s4m")

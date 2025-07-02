@@ -10,7 +10,14 @@ var screen_size: Vector2
 var can_shoot: bool = true
 var shoot_cooldown: float = 0.3
 
-@onready var sprite: Sprite2D = $Sprite2D
+# Animation states
+var current_animation_state: String = "idle"
+var is_moving_left: bool = false
+var is_moving_right: bool = false
+var is_shooting: bool = false
+var is_taking_damage: bool = false
+
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var shoot_timer: Timer = $ShootTimer
 
@@ -21,6 +28,9 @@ func _ready():
 	shoot_timer.wait_time = shoot_cooldown
 	shoot_timer.one_shot = true
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	
+	# Start with idle animation
+	play_animation("idle")
 
 func _physics_process(delta):
 	handle_movement(delta)
@@ -41,13 +51,46 @@ func _physics_process(delta):
 
 func handle_movement(delta):
 	velocity = Vector2.ZERO
+	is_moving_left = false
+	is_moving_right = false
 	
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= speed
+		is_moving_left = true
 	if Input.is_action_pressed("move_right"):
 		velocity.x += speed
+		is_moving_right = true
+	
+	# Update animation based on movement
+	update_movement_animation()
 	
 	move_and_slide()
+
+func update_movement_animation():
+	var new_animation = "idle"
+	
+	# Priority order: damage > shooting > movement > idle
+	if is_taking_damage:
+		new_animation = "take_damage"
+	elif is_shooting:
+		new_animation = "shoot"
+	elif is_moving_left:
+		new_animation = "move_left"
+	elif is_moving_right:
+		new_animation = "move_right"
+	else:
+		new_animation = "idle"
+	
+	if new_animation != current_animation_state:
+		play_animation(new_animation)
+
+func play_animation(animation_name: String):
+	if animated_sprite.sprite_frames.has_animation(animation_name):
+		current_animation_state = animation_name
+		animated_sprite.play(animation_name)
+	else:
+		# Fallback to default if animation doesn't exist
+		animated_sprite.play("default")
 
 func handle_shooting():
 	if Input.is_action_just_pressed("shoot") and can_shoot:
@@ -55,7 +98,17 @@ func handle_shooting():
 
 func shoot():
 	can_shoot = false
+	is_shooting = true
 	shoot_timer.start()
+	
+	# Play shoot animation briefly
+	play_animation("shoot")
+	
+	# Reset to movement animation after short delay
+	get_tree().create_timer(0.1).timeout.connect(func():
+		is_shooting = false
+		update_movement_animation()
+	)
 	
 	# Fire bullet from player position
 	var bullet_pos = global_position + Vector2(0, -32)  # Offset to shoot from front
@@ -69,10 +122,20 @@ func _on_shoot_timer_timeout():
 func take_damage():
 	player_hit.emit()
 	
-	# Add visual feedback (flash effect)
+	# Set damage animation state
+	is_taking_damage = true
+	play_animation("take_damage")
+	
+	# Reset damage animation after duration
+	get_tree().create_timer(0.5).timeout.connect(func():
+		is_taking_damage = false
+		update_movement_animation()
+	)
+	
+	# Add visual feedback (flash effect) - optional, since we have animation
 	var tween = create_tween()
-	tween.tween_property(sprite, "modulate:a", 0.3, 0.1)
-	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
+	tween.tween_property(animated_sprite, "modulate:a", 0.3, 0.1)
+	tween.tween_property(animated_sprite, "modulate:a", 1.0, 0.1)
 
 func set_invulnerable(duration: float):
 	# Temporary invulnerability after taking damage

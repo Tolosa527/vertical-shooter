@@ -28,12 +28,7 @@ letter_scene = ExtResource("7_p8r1s")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+anchors_preset = 0
 script = ExtResource("8_t4u6v")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
@@ -101,3 +96,13 @@ offset_top = 120.0
 offset_right = 250.0
 offset_bottom = 150.0
 text = "RESTART"
+
+[node name="UI2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_t4u6v")

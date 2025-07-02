@@ -13,7 +13,7 @@ var movement_pattern: String = "straight"  # "straight", "zigzag", "spiral"
 var time_alive: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func _ready():
@@ -30,6 +30,10 @@ func _ready():
 	
 	# Set initial velocity
 	velocity = Vector2(0, speed)
+	
+	# Start the default animation
+	if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation("default"):
+		animated_sprite.play("default")
 
 func _physics_process(delta):
 	time_alive += delta
@@ -72,8 +76,8 @@ func take_damage():
 	
 	# Visual feedback for damage
 	var tween = create_tween()
-	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
-	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(animated_sprite, "modulate", Color.RED, 0.1)
+	tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.1)
 	
 	if health <= 0:
 		destroy_obstacle()
@@ -88,8 +92,8 @@ func destroy_obstacle():
 	
 	# Destruction effect
 	var tween = create_tween()
-	tween.parallel().tween_property(sprite, "scale", Vector2(1.5, 1.5), 0.2)
-	tween.parallel().tween_property(sprite, "modulate:a", 0.0, 0.2)
+	tween.parallel().tween_property(animated_sprite, "scale", Vector2(1.5, 1.5), 0.2)
+	tween.parallel().tween_property(animated_sprite, "modulate:a", 0.0, 0.2)
 	tween.tween_callback(queue_free)
 
 func set_movement_pattern(pattern: String):

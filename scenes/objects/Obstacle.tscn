@@ -1,21 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm5j8p9n1k4ty"]
+[gd_scene load_steps=9 format=3 uid="uid://cm5j8qan1k4ty"]
 
-[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_obstacle"]
+[ext_resource type="Script" uid="uid://cwpw6g0bguiv0" path="res://scripts/Obstacle.gd" id="1_obstacle"]
+[ext_resource type="Texture2D" uid="uid://cpnxtkuv1ggq3" path="res://assets/sprites/obstacle_sheet.png" id="2_0kaxn"]
 
-[sub_resource type="PlaceholderTexture2D" id="placeholder_texture"]
-size = Vector2(32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvfeq"]
+atlas = ExtResource("2_0kaxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc0pw"]
+atlas = ExtResource("2_0kaxn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kelgq"]
+atlas = ExtResource("2_0kaxn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w30x8"]
+atlas = ExtResource("2_0kaxn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="obstacle_sprite_frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvfeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc0pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kelgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w30x8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
-size = Vector2(28, 28)
+size = Vector2(32, 32)
 
 [node name="Obstacle" type="Area2D"]
 collision_layer = 8
 collision_mask = 17
 script = ExtResource("1_obstacle")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.4, 0.4, 1)
-texture = SubResource("placeholder_texture")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("obstacle_sprite_frames")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
