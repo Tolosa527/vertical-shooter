@@ -1,38 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm5j8qan1k4ty"]
+[gd_scene load_steps=6 format=3 uid="uid://cm5j8qan1k4ty"]
 
 [ext_resource type="Script" uid="uid://cwpw6g0bguiv0" path="res://scripts/Obstacle.gd" id="1_obstacle"]
 [ext_resource type="Texture2D" uid="uid://cpnxtkuv1ggq3" path="res://assets/sprites/obstacle_sheet.png" id="2_0kaxn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvfeq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kaxn"]
 atlas = ExtResource("2_0kaxn")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc0pw"]
-atlas = ExtResource("2_0kaxn")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kelgq"]
-atlas = ExtResource("2_0kaxn")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w30x8"]
-atlas = ExtResource("2_0kaxn")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(256, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="obstacle_sprite_frames"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kvfeq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oc0pw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kelgq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w30x8")
+"texture": SubResource("AtlasTexture_0kaxn")
 }],
 "loop": true,
 "name": &"default",

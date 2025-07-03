@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6h8j4k2l9m1n"]
+
+[ext_resource type="Script" path="res://scenes/story/MissionBriefing.gd" id="1_mission_briefing"]
+
+[node name="MissionBriefing" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_mission_briefing")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.15, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GeneralSide" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GeneralPortrait" type="ColorRect" parent="HBoxContainer/GeneralSide"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 400)
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="PortraitLabel" type="Label" parent="HBoxContainer/GeneralSide/GeneralPortrait"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+text = "GENERAL"
+horizontal_alignment = 1
+
+[node name="AudioControls" type="VBoxContainer" parent="HBoxContainer/GeneralSide"]
+layout_mode = 2
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="HBoxContainer/GeneralSide/AudioControls"]
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/GeneralSide/AudioControls"]
+layout_mode = 2
+text = "PLAY AUDIO"
+
+[node name="DialogueSide" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerNameLabel" type="Label" parent="HBoxContainer/DialogueSide"]
+layout_mode = 2
+text = "Pilot: [NAME]"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+
+[node name="SubtitlePanel" type="Panel" parent="HBoxContainer/DialogueSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubtitleLabel" type="Label" parent="HBoxContainer/DialogueSide/SubtitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+text = "Click PLAY AUDIO to hear the mission briefing.
+Subtitles will appear here as the general speaks."
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer/DialogueSide"]
+layout_mode = 2
+text = "CONTINUE TO SHIP SELECTION"
+theme_override_font_sizes/font_size = 16
+disabled = true
+
+[connection signal="pressed" from="HBoxContainer/GeneralSide/AudioControls/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DialogueSide/ContinueButton" to="." method="_on_continue_button_pressed"]

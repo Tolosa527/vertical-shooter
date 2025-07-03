@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7i9k5l3m6n8o"]
+
+[ext_resource type="Script" path="res://scenes/story/ShipSelection.gd" id="1_ship_selection"]
+
+[node name="ShipSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_ship_selection")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.15, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SELECT YOUR SPACESHIP"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="Spacer1" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="ShipsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Ship1" type="VBoxContainer" parent="VBoxContainer/ShipsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ship1Display" type="ColorRect" parent="VBoxContainer/ShipsContainer/Ship1"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 150)
+color = Color(0.5, 0.5, 0.8, 1)
+
+[node name="Ship1Label" type="Label" parent="VBoxContainer/ShipsContainer/Ship1/Ship1Display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 10.0
+text = "FIGHTER"
+horizontal_alignment = 1
+
+[node name="Ship1Info" type="Label" parent="VBoxContainer/ShipsContainer/Ship1"]
+layout_mode = 2
+text = "Fast and agile
+Good for beginners"
+horizontal_alignment = 1
+
+[node name="Ship1Button" type="Button" parent="VBoxContainer/ShipsContainer/Ship1"]
+layout_mode = 2
+text = "SELECT FIGHTER"
+
+[node name="Ship2" type="VBoxContainer" parent="VBoxContainer/ShipsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ship2Display" type="ColorRect" parent="VBoxContainer/ShipsContainer/Ship2"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 150)
+color = Color(0.8, 0.5, 0.5, 1)
+
+[node name="Ship2Label" type="Label" parent="VBoxContainer/ShipsContainer/Ship2/Ship2Display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 10.0
+text = "CRUISER"
+horizontal_alignment = 1
+
+[node name="Ship2Info" type="Label" parent="VBoxContainer/ShipsContainer/Ship2"]
+layout_mode = 2
+text = "Balanced stats
+Reliable choice"
+horizontal_alignment = 1
+
+[node name="Ship2Button" type="Button" parent="VBoxContainer/ShipsContainer/Ship2"]
+layout_mode = 2
+text = "SELECT CRUISER"
+
+[node name="Ship3" type="VBoxContainer" parent="VBoxContainer/ShipsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ship3Display" type="ColorRect" parent="VBoxContainer/ShipsContainer/Ship3"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 150)
+color = Color(0.5, 0.8, 0.5, 1)
+
+[node name="Ship3Label" type="Label" parent="VBoxContainer/ShipsContainer/Ship3/Ship3Display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 10.0
+text = "DESTROYER"
+horizontal_alignment = 1
+
+[node name="Ship3Info" type="Label" parent="VBoxContainer/ShipsContainer/Ship3"]
+layout_mode = 2
+text = "Heavy firepower
+For experienced pilots"
+horizontal_alignment = 1
+
+[node name="Ship3Button" type="Button" parent="VBoxContainer/ShipsContainer/Ship3"]
+layout_mode = 2
+text = "SELECT DESTROYER"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="SelectedLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Make your choice, pilot!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+
+[connection signal="pressed" from="VBoxContainer/ShipsContainer/Ship1/Ship1Button" to="." method="_on_ship_selected" binds= ["Fighter"]]
+[connection signal="pressed" from="VBoxContainer/ShipsContainer/Ship2/Ship2Button" to="." method="_on_ship_selected" binds= ["Cruiser"]]
+[connection signal="pressed" from="VBoxContainer/ShipsContainer/Ship3/Ship3Button" to="." method="_on_ship_selected" binds= ["Destroyer"]]

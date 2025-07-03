@@ -12,9 +12,13 @@ config_version=5
 
 config/name="Vertical Shooter Educational Game"
 config/description="An educational vertical shooter where players collect letters to form words while avoiding obstacles"
-run/main_scene="res://scenes/main/Main.tscn"
+run/main_scene="res://scenes/menu/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/icons/icon.svg"
+
+[autoload]
+
+GameData="*res://scripts/GameData.gd"
 
 [display]
 
@@ -54,7 +58,7 @@ shoot={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.02, 0.02, 0.05, 1)
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.02, 0.02, 0.05, 1)

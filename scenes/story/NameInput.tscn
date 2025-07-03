@@ -1,0 +1,258 @@
+[gd_scene load_steps=4 format=3 uid="uid://b9k3m5n7p2q4r"]
+
+[ext_resource type="Script" path="res://scenes/story/NameInput.gd" id="1_name_input"]
+[ext_resource type="Texture2D" path="res://assets/story/backgrounds/command_center.png" id="2_background"]
+[ext_resource type="Texture2D" path="res://assets/story/characters/general.png" id="3_general"]
+[ext_resource type="Texture2D" path="res://assets/story/ui/panel_background.png" id="4_panel"]
+
+[node name="NameInput" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_name_input")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.15, 1)
+
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BackgroundOverlay" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.3)
+
+[node name="GridPattern" type="Control" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridLine1" type="ColorRect" parent="Background/GridPattern"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = -198.0
+color = Color(0, 0.3, 0.6, 0.3)
+
+[node name="GridLine2" type="ColorRect" parent="Background/GridPattern"]
+layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = -98.0
+color = Color(0, 0.3, 0.6, 0.3)
+
+[node name="CenterContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+theme_override_constants/separation = 60
+
+[node name="LeftPanel" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+
+[node name="LeftPanelBackground" type="ColorRect" parent="CenterContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.15, 0.20, 0.25, 0.30)
+
+[node name="LeftPanelBorder" type="ColorRect" parent="CenterContainer/LeftPanel/LeftPanelBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.25, 0.25, 0.25, 0.3)
+
+[node name="InputContainer" type="VBoxContainer" parent="CenterContainer/LeftPanel/LeftPanelBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+text = "◄ PILOT REGISTRATION ►"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+
+[node name="Spacer1" type="Control" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="DialogueLabel" type="RichTextLabel" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+bbcode_enabled = true
+text = "[center][color=yellow]◄ CLASSIFIED TRANSMISSION ►[/color]
+
+[color=white]Soldier, before you can join this critical mission, we need your identification for our military database.
+
+State your name for the [color=red]official records[/color].[/color][/center]"
+fit_content = true
+theme_override_font_sizes/normal_font_size = 14
+
+[node name="Spacer2" type="Control" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="InputSection" type="VBoxContainer" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+
+[node name="InputLabel" type="Label" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer/InputSection"]
+layout_mode = 2
+text = "► SOLDIER NAME ◄"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+
+[node name="NameInputField" type="LineEdit" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer/InputSection"]
+layout_mode = 2
+placeholder_text = "ENTER YOUR NAME..."
+theme_override_font_sizes/font_size = 18
+alignment = 1
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0.7, 0, 0.7)
+
+[node name="Spacer3" type="Control" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="ConfirmButton" type="Button" parent="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer"]
+layout_mode = 2
+text = "◄ CONFIRM REGISTRATION ►"
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+
+[node name="RightPanel" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+
+[node name="GeneralContainer" type="VBoxContainer" parent="CenterContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GeneralTitle" type="Label" parent="CenterContainer/RightPanel/GeneralContainer"]
+layout_mode = 2
+text = "MISSION COMMANDER"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+
+[node name="GeneralPortrait" type="Panel" parent="CenterContainer/RightPanel/GeneralContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(300, 400)
+
+[node name="PortraitImage" type="TextureRect" parent="CenterContainer/RightPanel/GeneralContainer/GeneralPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+texture = ExtResource("3_general")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PortraitFrame" type="NinePatchRect" parent="CenterContainer/RightPanel/GeneralContainer/GeneralPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PortraitFallback" type="ColorRect" parent="CenterContainer/RightPanel/GeneralContainer/GeneralPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+color = Color(0.1, 0.2, 0.3, 1)
+visible = false
+
+[node name="PortraitPlaceholder" type="Label" parent="CenterContainer/RightPanel/GeneralContainer/GeneralPortrait/PortraitFallback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 60.0
+text = "GENERAL MARTINEZ
+
+[DOWNLOAD PORTRAIT]
+Place image at:
+assets/story/characters/
+general.png
+
+SPACE COMMAND
+TACTICAL DIVISION"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+
+[node name="Spacer4" type="Control" parent="CenterContainer/RightPanel/GeneralContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 15)
+
+[node name="GeneralInfo" type="VBoxContainer" parent="CenterContainer/RightPanel/GeneralContainer"]
+layout_mode = 2
+
+[node name="RankLabel" type="Label" parent="CenterContainer/RightPanel/GeneralContainer/GeneralInfo"]
+layout_mode = 2
+text = "GENERAL MARTINEZ"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="DivisionLabel" type="Label" parent="CenterContainer/RightPanel/GeneralContainer/GeneralInfo"]
+layout_mode = 2
+text = "Strategic Operations Command"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[connection signal="text_submitted" from="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer/InputSection/NameInputField" to="." method="_on_name_submitted"]
+[connection signal="pressed" from="CenterContainer/LeftPanel/LeftPanelBackground/InputContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

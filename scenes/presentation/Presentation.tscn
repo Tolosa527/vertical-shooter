@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8d4v6x2y9z1a"]
+
+[ext_resource type="Script" path="res://scenes/presentation/Presentation.gd" id="1_presentation"]
+
+[node name="Presentation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_presentation")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(600, 400)
+
+[node name="IntroText1" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "In the vast emptiness of space..."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+modulate = Color(1, 1, 1, 0)
+
+[node name="Spacer1" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="IntroText2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Words are scattered among the stars"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+modulate = Color(1, 1, 1, 0)
+
+[node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="IntroText3" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your mission: Collect the letters"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+modulate = Color(1, 1, 1, 0)
+
+[node name="Spacer3" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="IntroText4" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Avoid the deadly obstacles"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+modulate = Color(1, 1, 1, 0)
+
+[node name="Spacer4" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="IntroText5" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "And complete the words to survive!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+modulate = Color(1, 1, 1, 0)
+
+[node name="SkipLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -30.0
+text = "Press SPACE to skip"
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.0
+autostart = true
